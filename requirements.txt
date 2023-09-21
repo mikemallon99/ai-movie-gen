@@ -5,7 +5,6 @@ accelerate
 safetensors
 moviepy
 soundfile
-nvidia-cudnn-cu11==8.7.0.84
 torch 
 torchvision 
 torchaudio

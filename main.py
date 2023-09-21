@@ -4,13 +4,12 @@ import torch
 def get_stable_diffusion_model():
     stable_diffusion_model = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
     stable_diffusion_model.to("cuda")
+
     return stable_diffusion_model
 
 
-stable_diffusion_model = get_stable_diffusion_model()
-
-
-def make_stable_diffusion_image(model, prompt, out_file):
+def make_stable_diffusion_image(prompt, out_file):
+  model = get_stable_diffusion_model()
   images = model(prompt=prompt).images[0]
   images.save(out_file)
 
@@ -19,12 +18,15 @@ import soundfile as sf
 import numpy as np
 from transformers import AutoProcessor, AutoModel
 
-# TODO: put these in a function
-audio_processor = AutoProcessor.from_pretrained("suno/bark-small")
-audio_model = AutoModel.from_pretrained("suno/bark-small").to("cuda")
+def get_audio_models():
+  audio_processor = AutoProcessor.from_pretrained("suno/bark-small")
+  audio_model = AutoModel.from_pretrained("suno/bark-small").to("cuda")
+  return audio_processor, audio_model
 
 
-def make_text_to_speech(model, processor, prompt, out_file):
+def make_text_to_speech(prompt, out_file):
+  processor, model = get_audio_models()
+
   inputs = processor(
       text=[prompt],
       return_tensors="pt",
@@ -49,9 +51,9 @@ import subprocess
 
 def run_wav2lip(image_path, audio_path, out_file):
     command = [
-        'python',
-        'wav2lip/inference.py',
-        '--checkpoint_path', 'wav2lip/checkpoints/wav2lip_gan.pth',
+        'python3',
+        'wav2lip_model/inference.py',
+        '--checkpoint_path', 'wav2lip_model/checkpoints/wav2lip_gan.pth',
         '--face', image_path,
         '--audio', audio_path,
         '--outfile', out_file
@@ -64,11 +66,11 @@ def run_wav2lip(image_path, audio_path, out_file):
 def create_ai_video(image_prompt, audio_prompt, out_file):
   print(f"Generating image for prompt: {image_prompt}")
   image_path = 'outputs/generated_image.jpg'
-  make_stable_diffusion_image(stable_diffusion_model, image_prompt, image_path)
+  make_stable_diffusion_image(image_prompt, image_path)
 
   print(f"Generating speech audio for text: {audio_prompt}")
   audio_path = 'outputs/generated_audio.wav'
-  make_text_to_speech(audio_model, audio_processor, audio_prompt, audio_path)
+  make_text_to_speech(audio_prompt, audio_path)
 
   print(f"Generating lip sync video...")
   run_wav2lip(
@@ -92,7 +94,7 @@ from moviepy.editor import ImageClip
 def generate_still_video(image_prompt, out_file):
   print(f"Generating image for prompt: {image_prompt}")
   image_path = 'outputs/generated_image.jpg'
-  make_stable_diffusion_image(stable_diffusion_model, image_prompt, image_path)
+  make_stable_diffusion_image(image_prompt, image_path)
 
   # Convert the image into a 3-second clip
   clip = ImageClip(image_path)
