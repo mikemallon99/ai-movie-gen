@@ -3,6 +3,40 @@ import os
 import os.path
 import torch
 
+PROMPT_TEMPLATE = """Write me a script for the Oppenheimer movie, but I need you to write it following my directions exactly. Every scene will begin with the prefix "Scene", and will have a brief description of what will happen. You must also describe each set that is used before you start giving shots that are taken there. Describe each shot in words so it can be used to generate an image with Stable Diffusion. The description of each shot needs to be rich, like you are painting a picture with words. If the shot has a person speaking in it, you must include the lines below the shot description. If a shot doesn't have a person speaking in it, then only have the prefix "Shot" with no lines section after it. Do not add any other sections, follow my directions exactly. Here's some examples, I need you to follow their formats exactly:
+Scene: Oppenheimer starts his day.
+--
+Set: Oppenheimer's bedroom
+--
+Shot: Oppenheimer laying in bed under the covers, opening his eyes. 
+Lines: Ahh, what a beautiful day..
+--
+Shot: Oppenheimer gets out of bed, stretching his arms. 
+Lines: I think I smell breakfast cooking!
+--
+Set: Oppenheimer's kitchen
+--
+Shot: Wide shot of Oppenheimer entering his kitchen. His wife is there cooking.
+--
+Shot: Oppenheimer's wife cooking, looking over her shoulder at oppenheimer.
+Lines: Morning, sweetie! Breakfast is almost ready, why dont you grab a seat?
+
+That is the end of the example. Now I need you to write this scene: """
+
+import openai
+
+def get_gpt4_response(prompt, api_key):
+    with open("openai_key.txt", "r") as f:
+        openai.api_key = f.read().strip()
+    
+    response = openai.Completion.create(
+      engine="gpt-4.0",
+      prompt=prompt,
+    )
+
+    return response.choices[0].text.strip()
+
+
 def get_stable_diffusion_model():
     stable_diffusion_model = DiffusionPipeline.from_pretrained("stabilityai/stable-diffusion-xl-base-1.0", torch_dtype=torch.float16, use_safetensors=True, variant="fp16")
     stable_diffusion_model.to("cuda")
