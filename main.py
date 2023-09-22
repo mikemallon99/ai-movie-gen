@@ -1,4 +1,6 @@
 from diffusers import DiffusionPipeline
+import os
+import os.path
 import torch
 
 def get_stable_diffusion_model():
@@ -49,27 +51,46 @@ def make_text_to_speech(prompt, out_file):
 
 import subprocess
 
+from moviepy.editor import VideoFileClip, AudioFileClip, ImageClip, concatenate_videoclips
+
+
+def combine_image_and_audio(image_path, audio_path, out_file):
+    print(f"Attempting to combine image: {image_path} ; and audio {audio_path}")
+    img_clip = ImageClip(image_path)
+    audio = AudioFileClip(audio_path)
+    img_clip = img_clip.set_duration(audio.duration)
+    video = img_clip.set_audio(audio)
+    video.write_videofile(out_file, fps=24, codec="libx264", audio_codec="aac")
+    print(f"Successfully combined image and audio to path {out_file}")
+
+
 def run_wav2lip(image_path, audio_path, out_file):
+    os.chdir("wav2lip_model")
     command = [
         'python3',
-        'wav2lip_model/inference.py',
-        '--checkpoint_path', 'wav2lip_model/checkpoints/wav2lip_gan.pth',
+        'inference.py',
+        '--checkpoint_path', 'checkpoints/wav2lip_gan.pth',
         '--face', image_path,
         '--audio', audio_path,
         '--outfile', out_file
     ]
 
     print(f"Running wav2lip function, output to path {out_file}")
-    subprocess.run(command)
+    result = subprocess.run(command)
+    os.chdir("..")
+
+    if result.returncode != 0:
+        print("Wav2Lip failed. Creating a video without lip sync...")
+        combine_image_and_audio(image_path, audio_path, out_file)
 
 
 def create_ai_video(image_prompt, audio_prompt, out_file):
   print(f"Generating image for prompt: {image_prompt}")
-  image_path = 'outputs/generated_image.jpg'
+  image_path = f'{os.path.dirname(__file__)}/outputs/generated_image.jpg'
   make_stable_diffusion_image(image_prompt, image_path)
 
   print(f"Generating speech audio for text: {audio_prompt}")
-  audio_path = 'outputs/generated_audio.wav'
+  audio_path = f'{os.path.dirname(__file__)}/outputs/generated_audio.wav'
   make_text_to_speech(audio_prompt, audio_path)
 
   print(f"Generating lip sync video...")
@@ -80,7 +101,6 @@ def create_ai_video(image_prompt, audio_prompt, out_file):
   )
 
 
-from moviepy.editor import VideoFileClip, concatenate_videoclips
 import sys
 
 def concatenate_videos(input_files, output_file):
@@ -93,7 +113,7 @@ from moviepy.editor import ImageClip
 
 def generate_still_video(image_prompt, out_file):
   print(f"Generating image for prompt: {image_prompt}")
-  image_path = 'outputs/generated_image.jpg'
+  image_path = f"{os.path.dirname(__file__)}/outputs/generated_image.jpg"
   make_stable_diffusion_image(image_prompt, image_path)
 
   # Convert the image into a 3-second clip
@@ -167,8 +187,8 @@ def create_video_from_scene(scene: Scene, out_file: str):
   for setting in scene.settings:
     for shot in setting.shots:
       print(f"generating clip #{i}")
-      clip_file = f'outputs/generated_video_{i}.mp4'
-      image_prompt = f"{shot.shot} Taken at {setting.set_desc}"
+      clip_file = f'{os.path.dirname(__file__)}/outputs/generated_video_{i}.mp4'
+      image_prompt = f"{shot.shot} Photo taken at {setting.set_desc}"
       # dialogue
       if isinstance(shot, TalkingShot):
         print(f"dialogue scene")
@@ -184,47 +204,44 @@ def create_video_from_scene(scene: Scene, out_file: str):
   print("finished generating clips. concatenating to one video now.")
   concatenate_videos(video_paths, out_file)
 
-second_try_text = """Scene: Oppenheimer's Workday Commencement
+second_try_text = """Scene: Oppenheimer confronts Spongebob.
 --
-Set: Oppenheimer's Home Exterior and Street
+Set: living room
 --
-Shot: The front of a modest two-story home, with Oppenheimer stepping out of the front door, briefcase in hand, wearing a crisp suit. The morning sun casts a warm light, and the chirping of birds can be heard.
+Shot: Wide shot of the living room. Spongebob is nervously looking around while Oppenheimer stands sternly.
 --
-Shot: Oppenheimer locking his front door and then taking a moment to adjust his hat and straighten his tie.
-Lines: Let's make history today.
+Shot: Close-up of Spongebob's hands, clutching a pipe.
 --
-Shot: A side shot of Oppenheimer walking down the sidewalk, neighbors waving at him as they tend to their gardens or collect their morning newspapers.
+Shot: Oppenheimer's face, a mix of concern and frustration.
+Lines: Spongebob, you need to stop this. It's destroying you.
 --
-Set: Los Alamos Laboratory Entrance
+Shot: Spongebob looking defiant, smoke around him.
+Lines: You don't get it, Oppenheimer. It's not that simple.
 --
-Shot: The exterior of the laboratory, a blend of rustic and industrial architecture. Armed guards stand at the entrance, checking identification of those entering. The sign overhead reads "Los Alamos Laboratory."
+Shot: Oppenheimer, taking a step closer, extending a hand towards Spongebob.
+Lines: Let me help you, Spongebob. We can get you the help you need.
 --
-Shot: Oppenheimer approaching the entrance, nodding at one of the guards.
+Shot: Spongebob, with tears forming in his eyes, looking away.
+Lines: I... I don't want your help. I don't need it.
 --
-Shot: Close-up of Oppenheimer showing his identification to the guard.
+Shot: Oppenheimer, looking heartbroken but determined.
+Lines: This isn't you, Spongebob. You're better than this. Think about all your friends, your job at the Krusty Krab. Don't throw it all away.
 --
-Shot: The guard saluting Oppenheimer respectfully.
-Lines: Good morning, Dr. Oppenheimer.
+Shot: Spongebob, in a burst of anger, throws his pipe to the ground, shattering it.
+Lines: This is MY life! You don't control me!
 --
-Shot: Oppenheimer walking through the entrance, the weight of his responsibilities evident in his posture.
-Lines: Morning. Let's see where we stand today.
+Shot: Spongebob, tears streaming down, taking a swing at Oppenheimer.
 --
-Set: Oppenheimer's Office at Los Alamos
+Shot: Oppenheimer, ducking to avoid the punch, looking shocked.
 --
-Shot: A spacious office with wooden bookshelves lining the walls filled with books, papers, and scientific equipment. A large wooden desk dominates the room with a chair behind it. There are papers, schematics, and a few pictures on the desk. The room has an aura of intellectual rigor.
+Shot: Spongebob, panting and looking distraught.
+Lines: Get the fuck out of my life, Oppenheimer!
 --
-Shot: Oppenheimer entering his office, placing his briefcase on his desk and sitting down.
---
-Shot: Oppenheimer taking a deep breath, looking at a picture of his family on his desk.
-Lines: For them... for all of them.
---
-Shot: Oppenheimer beginning to sift through the papers on his desk, preparing for the day's work.
-Lines: Let's get to it.
---
+Shot: Oppenheimer, taking a step back, nodding slowly, a look of pain in his eyes.
+Lines: I just want what's best for you, Spongebob. Remember that.
 """
 
 
-out_file = 'outputs/generated_full_movie_4.mp4'
+out_file = f'{os.path.dirname(__file__)}/outputs/generated_full_movie_4.mp4'
 scene = create_scene(second_try_text)
 create_video_from_scene(scene, out_file)
-display_video(out_file)
