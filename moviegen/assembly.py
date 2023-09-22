@@ -17,7 +17,7 @@ def create_video_from_scene(scene: Scene, out_file: str):
   for setting in scene.settings:
     for shot in setting.shots:
       print(f"generating clip #{i}")
-      clip_file = f'{os.path.dirname(__file__)}/outputs/generated_video_{i}.mp4'
+      clip_file = f'{os.path.dirname(__file__)}/../outputs/generated_video_{i}.mp4'
       image_prompt = f"{shot.shot} Photo taken at {setting.set_desc}"
       # dialogue
       if isinstance(shot, TalkingShot):

@@ -1,8 +1,10 @@
 import os
 import os.path
 import torch
+import subprocess
 from diffusers import DiffusionPipeline
 from moviepy.editor import ImageClip
+from moviegen.audiogen import make_text_to_speech
 
 
 def get_stable_diffusion_model():
@@ -16,6 +18,16 @@ def make_stable_diffusion_image(prompt, out_file):
   model = get_stable_diffusion_model()
   images = model(prompt=prompt).images[0]
   images.save(out_file)
+
+
+def combine_image_and_audio(image_path, audio_path, out_file):
+    print(f"Attempting to combine image: {image_path} ; and audio {audio_path}")
+    img_clip = ImageClip(image_path)
+    audio = AudioFileClip(audio_path)
+    img_clip = img_clip.set_duration(audio.duration)
+    video = img_clip.set_audio(audio)
+    video.write_videofile(out_file, fps=24, codec="libx264", audio_codec="aac")
+    print(f"Successfully combined image and audio to path {out_file}")
 
 
 def run_wav2lip(image_path, audio_path, out_file):
@@ -39,23 +51,13 @@ def run_wav2lip(image_path, audio_path, out_file):
         combine_image_and_audio(image_path, audio_path, out_file)
 
 
-def combine_image_and_audio(image_path, audio_path, out_file):
-    print(f"Attempting to combine image: {image_path} ; and audio {audio_path}")
-    img_clip = ImageClip(image_path)
-    audio = AudioFileClip(audio_path)
-    img_clip = img_clip.set_duration(audio.duration)
-    video = img_clip.set_audio(audio)
-    video.write_videofile(out_file, fps=24, codec="libx264", audio_codec="aac")
-    print(f"Successfully combined image and audio to path {out_file}")
-
-
 def gen_talking_video(image_prompt, audio_prompt, out_file):
   print(f"Generating image for prompt: {image_prompt}")
-  image_path = f'{os.path.dirname(__file__)}/outputs/generated_image.jpg'
+  image_path = f'{os.path.dirname(__file__)}/../outputs/generated_image.jpg'
   make_stable_diffusion_image(image_prompt, image_path)
 
   print(f"Generating speech audio for text: {audio_prompt}")
-  audio_path = f'{os.path.dirname(__file__)}/outputs/generated_audio.wav'
+  audio_path = f'{os.path.dirname(__file__)}/../outputs/generated_audio.wav'
   make_text_to_speech(audio_prompt, audio_path)
 
   print(f"Generating lip sync video...")
@@ -68,7 +70,7 @@ def gen_talking_video(image_prompt, audio_prompt, out_file):
 
 def gen_still_video(image_prompt, out_file):
   print(f"Generating image for prompt: {image_prompt}")
-  image_path = f"{os.path.dirname(__file__)}/outputs/generated_image.jpg"
+  image_path = f"{os.path.dirname(__file__)}/../outputs/generated_image.jpg"
   make_stable_diffusion_image(image_prompt, image_path)
 
   # Convert the image into a 3-second clip
