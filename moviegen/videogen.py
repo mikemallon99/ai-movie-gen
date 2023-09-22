@@ -39,7 +39,11 @@ def run_wav2lip(image_path, audio_path, out_file):
         '--checkpoint_path', f"{os.path.dirname(__file__)}/../models/wav2lip_model/checkpoints/wav2lip_gan.pth",
         '--face', image_path,
         '--audio', audio_path,
-        '--outfile', out_file
+        '--outfile', out_file,
+        '--fps', 24,
+        '--static', True,
+        '--out_height', 720,
+        '--nosmooth',
     ]
 
     print(f"Running wav2lip function, output to path {out_file}")
@@ -56,8 +60,8 @@ def gen_talking_video(image_prompt, audio_prompt, out_file):
   print(f"Generating speech audio for text: {audio_prompt}")
   audio_path = f'{os.path.dirname(__file__)}/../outputs/generated_audio.wav'
   make_text_to_speech(audio_prompt, audio_path)
-  combine_image_and_audio(image_path, audio_path, out_file)
-  return
+  #combine_image_and_audio(image_path, audio_path, out_file)
+  #return
 
   print(f"Generating lip sync video...")
   return_code = run_wav2lip(
