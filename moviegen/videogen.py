@@ -26,7 +26,7 @@ def combine_image_and_audio(image_path, audio_path, out_file):
     audio = AudioFileClip(audio_path)
     img_clip = img_clip.set_duration(audio.duration)
     video = img_clip.set_audio(audio)
-    video.write_videofile(out_file, fps=24)
+    video.write_videofile(out_file, fps=25, preset='ultrafast')
     print(f"Successfully combined image and audio to path {out_file}")
 
 
@@ -40,9 +40,9 @@ def run_wav2lip(image_path, audio_path, out_file):
         '--face', image_path,
         '--audio', audio_path,
         '--outfile', out_file,
-        '--fps', 24,
-        '--static', True,
-        '--out_height', 720,
+        '--fps', '25',
+        '--static', 'True',
+        '--out_height', '720',
         '--nosmooth',
     ]
 
@@ -60,8 +60,8 @@ def gen_talking_video(image_prompt, audio_prompt, out_file):
   print(f"Generating speech audio for text: {audio_prompt}")
   audio_path = f'{os.path.dirname(__file__)}/../outputs/generated_audio.wav'
   make_text_to_speech(audio_prompt, audio_path)
-  #combine_image_and_audio(image_path, audio_path, out_file)
-  #return
+  # combine_image_and_audio(image_path, audio_path, out_file)
+  # return
 
   print(f"Generating lip sync video...")
   return_code = run_wav2lip(
@@ -85,5 +85,5 @@ def gen_still_video(image_prompt, out_file):
 
   # Write the clip to an mp4 file
   print(f"Writing video to path {out_file}")
-  clip.write_videofile(out_file, fps=24)
+  clip.write_videofile(out_file, fps=25, preset='ultrafast')
 

@@ -5,8 +5,10 @@ from moviepy.editor import VideoFileClip, concatenate_videoclips
 
 
 def concatenate_videos(input_files, output_file):
-    clips = [VideoFileClip(video) for video in input_files]
-    final_clip = concatenate_videoclips(clips, method="compose")
+    clips = [VideoFileClip(clip) for clip in input_files]
+    target_width, target_height = clips[0].size
+    resized_clips = [clip.resize(newsize=(target_width, target_height)) for clip in clips]
+    final_clip = concatenate_videoclips(resized_clips, method="compose")
     final_clip.write_videofile(output_file, codec="libx264", audio_codec="aac")
 
 
@@ -18,7 +20,7 @@ def create_video_from_scene(scene: Scene, out_file: str):
     for shot in setting.shots:
       print(f"generating clip #{i}")
       clip_file = f'{os.path.dirname(__file__)}/../outputs/generated_video_{i}.mp4'
-      image_prompt = f"{shot.shot} Photo taken at {setting.set_desc}"
+      image_prompt = f"{shot.shot} cinematic --ar 16:9"
       # dialogue
       if isinstance(shot, TalkingShot):
         print(f"dialogue scene")
