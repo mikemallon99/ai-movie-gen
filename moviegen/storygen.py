@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import List
 
 
-PROMPT_TEMPLATE = """Write me a script for the Oppenheimer movie, but I need you to write it following my directions exactly. Every scene will begin with the prefix "Scene", and will have a brief description of what will happen. You must also describe each set that is used before you start giving shots that are taken there. Describe each shot in words so it can be used to generate an image with Stable Diffusion. The description of each shot needs to be rich, like you are painting a picture with words. If the shot has a person speaking in it, you must include the lines below the shot description. If a shot doesn't have a person speaking in it, then only have the prefix "Shot" with no lines section after it. Do not add any other sections, follow my directions exactly. Here's some examples, I need you to follow their formats exactly:
+SYSTEM_PROMPT = """You are ScriptGPT, an AI bot which generates movie scripts that follow a very specific format. Every scene will begin with the prefix "Scene", and will have a brief description of what will happen. You must also describe each set that is used before you start giving shots that are taken there. Describe each shot in words so it can be used to generate an image with Stable Diffusion. The description of each shot needs to be rich, like you are painting a picture with words. If the shot has a person speaking in it, you must include the lines below the shot description. If a shot doesn't have a person speaking in it, then only have the prefix "Shot" with no lines section after it. Do not add any other sections, follow my directions exactly. Here's some examples, you need to follow their formats exactly:
 Scene: Oppenheimer starts his day.
 --
 Set: Oppenheimer's bedroom
@@ -22,8 +22,9 @@ Shot: Wide shot of Oppenheimer entering his kitchen. His wife is there cooking.
 --
 Shot: Oppenheimer's wife cooking, looking over her shoulder at oppenheimer.
 Lines: Morning, sweetie! Breakfast is almost ready, why dont you grab a seat?
+--"""
 
-That is the end of the example. Now I need you to write this scene: """
+PROMPT_TEMPLATE = """I need you to write this scene: """
 
 
 @dataclass
@@ -53,18 +54,23 @@ class Movie:
 
 
 def get_gpt4_response(prompt):
+    print(f"Calling GPT4 with prompt: {prompt}")
     with open(f"{os.path.dirname(__file__)}/../openai_key.txt", "r") as f:
         openai.api_key = f.read().strip()
     
-    response = openai.Completion.create(
-      engine="gpt-4",
-      prompt=prompt,
+    response = openai.ChatCompletion.create(
+      model="gpt-4",
+      messages=[
+        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "user", "content": PROMPT_TEMPLATE + prompt},
+      ]
     )
-
-    return response.choices[0].text.strip()
-
+    output = response.choices[0].message.content.strip()
+    print(f"Output from GPT: {output}")
+    return output
 
 def create_scene(text_input: str):
+  print(f"Creating scene from text input: {text_input}")
   settings: List[Setting] = []
   scene_desc = ""
   shot = ""
@@ -86,10 +92,12 @@ def create_scene(text_input: str):
     elif "Shot" in section:
       shot = section.split("Shot:")[1].strip()
       cur_setting_shots.append(VideoShot(shot=shot))
-  return Scene(scene_desc=scene_desc, settings=settings)
+  scene = Scene(scene_desc=scene_desc, settings=settings) 
+  print(f"Created scene: {scene}")
+  return scene
 
 
 def create_scene_from_prompt(prompt: str):
     response = get_gpt4_response(prompt)
-    return create_scene(text_input)
+    return create_scene(response)
 

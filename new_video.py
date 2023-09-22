@@ -1,3 +1,4 @@
+import sys
 from moviegen.assembly import create_video_from_prompt
 
 
@@ -10,5 +11,5 @@ if __name__ == "__main__":
     prompt_text = sys.argv[1]
     output_filename = sys.argv[2]
 
-    create_video_from_prompt = (prompt_text, output_filename)
+    create_video_from_prompt(prompt_text, output_filename)
 

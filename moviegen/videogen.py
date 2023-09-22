@@ -1,4 +1,5 @@
 import os
+import os.path
 import torch
 from diffusers import DiffusionPipeline
 from moviepy.editor import ImageClip

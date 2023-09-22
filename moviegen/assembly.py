@@ -1,5 +1,6 @@
-from moviegen.videogen import create_ai_video, generate_still_video
-from moviegen.storygen import Scene
+import os.path
+from moviegen.videogen import gen_talking_video, gen_still_video
+from moviegen.storygen import Scene, create_scene_from_prompt, TalkingShot, VideoShot
 from moviepy.editor import VideoFileClip, concatenate_videoclips
 
 
