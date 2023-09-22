@@ -3,7 +3,7 @@ import os.path
 import torch
 import subprocess
 from diffusers import DiffusionPipeline
-from moviepy.editor import ImageClip
+from moviepy.editor import ImageClip, AudioFileClip
 from moviegen.audiogen import make_text_to_speech
 
 
@@ -26,7 +26,7 @@ def combine_image_and_audio(image_path, audio_path, out_file):
     audio = AudioFileClip(audio_path)
     img_clip = img_clip.set_duration(audio.duration)
     video = img_clip.set_audio(audio)
-    video.write_videofile(out_file, fps=24, codec="libx264", audio_codec="aac")
+    video.write_videofile(out_file, fps=24)
     print(f"Successfully combined image and audio to path {out_file}")
 
 
@@ -45,10 +45,7 @@ def run_wav2lip(image_path, audio_path, out_file):
     print(f"Running wav2lip function, output to path {out_file}")
     result = subprocess.run(command)
     os.chdir(prev_dir)
-
-    if result.returncode != 0:
-        print("Wav2Lip failed. Creating a video without lip sync...")
-        combine_image_and_audio(image_path, audio_path, out_file)
+    return result.returncode
 
 
 def gen_talking_video(image_prompt, audio_prompt, out_file):
@@ -59,13 +56,18 @@ def gen_talking_video(image_prompt, audio_prompt, out_file):
   print(f"Generating speech audio for text: {audio_prompt}")
   audio_path = f'{os.path.dirname(__file__)}/../outputs/generated_audio.wav'
   make_text_to_speech(audio_prompt, audio_path)
+  combine_image_and_audio(image_path, audio_path, out_file)
+  return
 
   print(f"Generating lip sync video...")
-  run_wav2lip(
+  return_code = run_wav2lip(
       image_path=image_path,
       audio_path=audio_path,
       out_file=out_file
   )
+  if return_code != 0:
+    print("Wav2Lip failed. Creating a video without lip sync...")
+    combine_image_and_audio(image_path, audio_path, out_file)
 
 
 def gen_still_video(image_prompt, out_file):
