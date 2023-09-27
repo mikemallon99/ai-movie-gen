@@ -24,20 +24,18 @@ Now, please provide me an outline for the movie:
 """
 
 
-STORYBOARD_SYSTEM_PROMPT = """You are ScriptGPT, an ai bot that creates entire scripts out of outlines. I need you to follow my directions exactly. Do not add any extra formatting or responses. I will give you my input as sections separated with a "--". There is an "Act" section, which gives a description of the act. Then, there will be a "Scene" section for each scene. I'd like you to expand on each scene by giving a full script for each scene, with sections "Setting", "Action", "Line", and if you have a "Line" section then you must start it by giving the character who's saying the line, like this "Line: Oppenheimer: <line>". Additionally, I need a "Frame" section paired with each "Action" and "Line" section which describes a storyboard version of the image. Please provide as much detail of the image as you could, as if you were giving instructions to a painter making the storyboard frame. Give details like how the shot is framed, the environment, all the characters in the frame. Also, provide the full context of the image as there needs to be continuity across each story board frame. Here is an example of what I'm looking for:
+STORYBOARD_SYSTEM_PROMPT = """You are ScriptGPT, an ai bot that creates entire scripts out of outlines. I need you to follow my directions exactly. Do not add any extra formatting or responses. My input will be a script for the scene that I need you to expand in detail on for the sake of creating each shot. I'd like you to reformat the script into something which can be read by a machine. The script needs to be broken up into sections each separated by two dashes "--", with sections "Setting", "Frame", and "Line". If you have a "Line" section then you must start it by giving the character who's saying the line, like this "Line: Oppenheimer: <line>". The "Frame" section will give a visual description of what the shot needs to look like and will be used as input to an AI image generation algorithm. Each "Lines" section will also need a "Frame" box below it to be able to describe the frame that the character saying the lines is in. Each section can only have one "Lines" line and one "Frame" line, you cannot have multiple lines or multiple frames. When writing the frame section, please give as much detail and context as possible so the diffusion algorithm understands what to make and returns a high quality image. The text inside the frame must be able to stand alone without requiring context from any other sections. For example, a frame cannot say "Oppenheimer watches it happen" because there is no context for what "it" refers to. Instead you should provide the full context, like "Oppenheimer stands in a field looking at an atomic bomb explosion". Here is an example of what I'm looking for:
 Act: The Manhattan Project
 --
 Scene: Oppenheimer's recruitment into the secret project, highlighting the urgency and stakes.
 --
 Setting: A dimly lit room in a secret government facility, filled with documents, classified blueprints, and a few officials seated around a table.
 --
-Action: The door opens, and a man, General Groves, gestures for Oppenheimer to come in.
 Frame: The door slowly creaks open revealing a backlighted silhouette of General Groves. The framing is a medium shot with the General centered. The dimly lit room with officials, blueprints, and papers are blurry in the background.
 --
 Line: General Groves: Oppenheimer, glad you could make it.
 Frame: Close-up on General Groves. His face is stern but relieved. The dim light casts shadows on his face, emphasizing his wrinkles and determination.
 --
-Action: Oppenheimer nods and takes a seat.
 Frame: Oppenheimer standing near the door, silhouetted by the light behind him, nodding his head. Medium shot framing, shot from under him and slightly to the side, capturing the table with officials in the foreground.
 --
 Line: Oppenheimer: General. I’ve heard whispers. What's so urgent?
@@ -46,56 +44,39 @@ Frame: Oppenheimer sitting down with the officials surrounding the table. Medium
 Line: Official 1: Dr. Oppenheimer, this is a matter of utmost national security.
 Frame: Close-up on Official 1. He looks older, with grey hair, stern, wearing spectacles. His voice carries gravity, emphasizing the importance of his words.
 --
-Action: General Groves pushes a folder of documents toward Oppenheimer.
 Frame: A mid-shot showing General Groves' hand pushing a manila folder across the table. Oppenheimer's hands are in the frame's bottom, showing anticipation as the folder moves closer to him.
+
+Heres an example of a section that is incorrect, because it has 2 "Line" parts in a single section. You must only put a single "Line" per section:
+--
+Line: SpongeBob: It was a big swirly thing! Super fun. Felt like Jellyfish Fields on a windy day.
+Line: Patrick: Yeah, and then we were here. In the not-wet place.
+Frame: Close-up of SpongeBob and Patrick. They both wear expressions of joy as SpongeBob explains their fantastic tale, with the reverberating sternness of the room in the background.
+--
 """
 
 
 STORYBOARD_USER_PROMPT = """Please provide me a large script for this input:
---
-Act: The Manhattan Project
---
-Scene: Oppenheimer's recruitment into the secret project, highlighting the urgency and stakes.
---
-Scene: Collaboration and conflicts among scientists, including tensions with Edward Teller.
---
-Scene: The trials and tribulations of designing and testing the bomb, emphasizing Oppenheimer's evolving moral dilemma.
---
-Scene: The successful test at Trinity site, juxtaposed with Oppenheimer's famous line, "Now I am become Death, the destroyer of worlds."
 """
 
 
-SYSTEM_PROMPT = """You are ScriptGPT, an AI bot which generates movie scripts that follow a very specific format. Every scene will begin with the prefix "Scene", and will have a brief description of what will happen. You must also describe each set that is used before you start giving shots that are taken there. Describe each shot in words so it can be used to generate an image with Stable Diffusion. The description of each shot needs to be rich, like you are painting a picture with words. If the shot has a person speaking in it, you must include the lines below the shot description. If a shot doesn't have a person speaking in it, then only have the prefix "Shot" with no lines section after it. Do not add any other sections, follow my directions exactly. Here's some examples, you need to follow their formats exactly:
-Scene: Oppenheimer starts his day.
---
-Set: Oppenheimer's bedroom
---
-Shot: Oppenheimer laying in bed under the covers, opening his eyes. 
-Lines: Ahh, what a beautiful day..
---
-Shot: Oppenheimer gets out of bed, stretching his arms. 
-Lines: I think I smell breakfast cooking!
---
-Set: Oppenheimer's kitchen
---
-Shot: Wide shot of Oppenheimer entering his kitchen. His wife is there cooking.
---
-Shot: Oppenheimer's wife cooking, looking over her shoulder at oppenheimer.
-Lines: Morning, sweetie! Breakfast is almost ready, why dont you grab a seat?
---"""
+STORYBOARD_ERROR_RESPONSE = """This doesnt meet the format requirements specified. Each section must be separated by "--", and then every talking section can only have one "Line". You cannot have multiple lines in one section. Also, every section must have a "Frame" description even if theres no talking."""
 
-PROMPT_TEMPLATE = """I need you to write this scene: """
+
+SCRIPT_SYSTEM_PROMPT = """You are ScriptGPT, an AI chat bot which helps people expand their ideas into riveting movie script. You will work with the user to give them a movie script that they love. You should start off by just providing an outline of all the scenes that the movie will contain, giving them each a number. The user will have corrections they will want to make to the outline. Work with the user and adjust the outline until it meets their needs."""
+
+EXPANSION_SYSTEM_PROMPT = """You are ScriptGPT, an AI chat bot which helps people expand their ideas into riveting movie script. You will work with the user to give them a movie script that they love. You will be given the idea for the movie and a list of scenes, and the user will instruct you on which scene to expand the into a full movie script.
+"""
 
 
 @dataclass
 class VideoShot:
   shot: str
-  action: str
 
 @dataclass
 class TalkingShot:
   shot: str
   lines: str
+  speaker: str
 
 @dataclass
 class Setting:
@@ -114,24 +95,137 @@ class Movie:
   scenes: List[Scene]
 
 
+def response_has_errors(response):
+    for section in response.split("--"):
+        if section.count("Line:") > 1:
+            return True
+        if "Line:" in section and "Frame" not in section:
+            return True
+
+    return False
+
+
 def get_gpt4_response(prompt):
-    print(f"Calling GPT4 with prompt: {prompt}")
     with open(f"{os.path.dirname(__file__)}/../openai_key.txt", "r") as f:
         openai.api_key = f.read().strip()
     
     system_prompt = STORYBOARD_SYSTEM_PROMPT
-    user_prompt = STORYBOARD_USER_PROMPT
+    user_prompt = STORYBOARD_USER_PROMPT + prompt.replace("**", "")
     print(f"Calling storyboard GPT4 with user prompt: {user_prompt}")
-    response = openai.ChatCompletion.create(
-      model="gpt-4",
-      messages=[
+
+    input_messages = [
         {"role": "system", "content": system_prompt},
         {"role": "user", "content": user_prompt},
-      ]
+    ]
+    response = openai.ChatCompletion.create(
+      model="gpt-4",
+      messages=input_messages
     )
     output = response.choices[0].message.content.strip()
+
     print(f"Output from GPT: {output}")
+    if response_has_errors(output):
+        print("Found errors in response, sending a correction")
+        input_messages.append(
+            response.choices[0].message
+        )
+        input_messages.append(
+                {"role": "assistant", "content": STORYBOARD_ERROR_RESPONSE}
+        )
+        response = openai.ChatCompletion.create(
+          model="gpt-4",
+          messages=input_messages
+        )
+        output = response.choices[0].message.content.strip()
+        print(f"Output from GPT: {output}")
+        if response_has_errors(output):
+            print("Alright theres still errors, this shits never gonna work. Just skip this and do the next one")
+
     return output
+
+
+def contains_number(s):
+    for char in s:
+        if char.isdigit():
+            return True
+    return False
+
+
+# Make back and forth chat with chatgpt
+def create_scenes():
+    with open(f"{os.path.dirname(__file__)}/../openai_key.txt", "r") as f:
+        openai.api_key = f.read().strip()
+    
+    system_prompt = SCRIPT_SYSTEM_PROMPT
+    input_messages = [
+        {"role": "system", "content": system_prompt},
+    ]
+    while True:
+        print(">> ")
+        user_input = input()
+        if user_input == "done":
+            break
+        print("\n")
+        new_msg = {"role": "user", "content": user_input}
+        input_messages.append(new_msg)
+        response = openai.ChatCompletion.create(
+          model="gpt-4",
+          messages=input_messages
+        )
+        system_msg = response.choices[0].message
+
+        print(f"GPT-4: {system_msg.content}")
+        print("\n")
+
+    scene_list = []
+    for line in system_msg.content.splitlines():
+        if contains_number(line):
+            scene_list.append(line)
+    print(scene_list)
+    return scene_list
+
+
+def expand_scenes(movie_idea, scene_list):
+    with open(f"{os.path.dirname(__file__)}/../openai_key.txt", "r") as f:
+        openai.api_key = f.read().strip()
+    
+    system_prompt = EXPANSION_SYSTEM_PROMPT
+    system_prompt += f"MOVIE IDEA: {movie_idea}\n"
+    system_prompt += "SCENES:\n"
+    for scene in scene_list:
+        system_prompt += f"{scene}\n"
+
+    input_messages = [
+        {"role": "system", "content": system_prompt},
+    ]
+    scripts = []
+    for i in range(1, len(scene_list) + 1):
+        new_msg = {"role": "user", "content": f"give me the script for scene {i}"}
+        response = openai.ChatCompletion.create(
+          model="gpt-4",
+          messages=input_messages + [new_msg]
+        )
+        system_msg = response.choices[0].message
+        scripts.append(system_msg.content)
+
+    while True:
+        print(">> ")
+        user_input = input()
+        if user_input == "done":
+            break
+        print("\n")
+        new_msg = {"role": "user", "content": user_input}
+        input_messages.append(new_msg)
+        response = openai.ChatCompletion.create(
+          model="gpt-4",
+          messages=input_messages
+        )
+        system_msg = response.choices[0].message
+
+        print(f"GPT-4: {system_msg.content}")
+        print("\n")
+    scene_list = system_msg.content
+
 
 def create_scene(text_input: str):
   print(f"Creating scene from text input: {text_input}")
@@ -140,24 +234,25 @@ def create_scene(text_input: str):
   shot = ""
   lines = ""
   for section in text_input.split("--"):
-    section = section.strip("\n")
+    section = section.strip("\n \t")
     if "Scene:" in section:
       scene_desc = section.split("Scene:")[1].strip()
     elif "Setting:" in section:
       cur_setting_shots: List[VideoShot | TalkingShot] = []
-      cur_setting_desc = section.split("Setting:")[1].strip()
+      cur_setting_desc = section.split("Setting:")[1].strip("\n \t")
       cur_setting = Setting(cur_setting_desc, cur_setting_shots)
       settings.append(cur_setting)
     elif "Line" in section:
       section_split = section.split("\n")
-      lines = section_split[0].split("Line:")[1].strip()
-      frame = section_split[1].split("Frame:")[1].strip()
-      cur_setting_shots.append(TalkingShot(shot=frame, lines=lines))
-    elif "Action" in section:
-      section_split = section.split("\n")
-      action = section_split[0].split("Action:")[1].strip()
-      frame = section_split[1].split("Frame:")[1].strip()
-      cur_setting_shots.append(VideoShot(shot=frame, action=action))
+      line_unformatted = section_split[0].split("Line:")[1].strip("\n \t")
+      speaker_split = line_unformatted.split(":")
+      speaker = speaker_split[0]
+      line = speaker_split[1].strip("\n \t")
+      frame = section_split[1].split("Frame:")[1].strip("\n \t")
+      cur_setting_shots.append(TalkingShot(shot=frame, lines=line, speaker=speaker))
+    elif "Frame" in section:
+      frame = section.split("Frame:")[1].strip("\n \t")
+      cur_setting_shots.append(VideoShot(shot=frame))
   scene = Scene(scene_desc=scene_desc, settings=settings) 
   print(f"Created scene: {scene}")
   return scene

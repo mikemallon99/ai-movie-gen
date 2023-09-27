@@ -1,0 +1,76 @@
+Act: Oppenheimer 2: Spongebob's Curse
+--
+Scene: Tour of Trouble
+--
+Setting: The main laboratory within the Manhattan Project facility. The place is bustling with activity. Scientists hurry around, engaging in serious discussions and taking diligent notes. Large, imposing machinery hums, beeps, and whirs throughout the room, creating a symphony of scientific endeavor.
+--
+Frame: A medium shot showing Oppenheimer addressing a small gathering of focused scientists. The dynamic background of constantly moving scientists immersed in their tasks, mixed with the imposing sight of the large machinery, creates a vivid contrast. 
+--
+Line: Oppenheimer: Keep a close eye on our... guests. We can't afford any disruptions.
+Frame: Close-up on Oppenheimer. His face bears a serious focus. The dim laboratory light casts dramatic shadows that underscore the gravity of his words.
+--
+Line: Scientist 1: Do we even know what they are?
+Frame: A close-up shot of a middle-aged scientist, Scientist 1, wearing lab glasses, looking puzzled and slightly worried, with Oppenheimer standing in the background.
+--
+Line: Scientist 2: Some sort of sea creatures, I assume?
+Frame: Medium shot of Scientist 2, another middle-aged individual with bushy eyebrows and a lab coat, with an air of dismissive indifference, standing among a group of scientists.
+--
+Line: SpongeBob: Oooh! Can we get a tour? This place looks even more fun than the Glove World amusement park!
+Frame: Close shot of a wide-eyed SpongeBob, with his smile stretching across his face, capturing his awe and excitement. The busy background of scientists and machinery serves as a stark contrast.
+--
+Line: Patrick: Do you have any food? I'm starving!
+Frame: Close-up on Patrick. He's rubbing his belly with an expression of faint discomfort, his eyes hopeful and a little urgent. The background is a blur, focusing on his immediate need.
+--
+Line: Dr. Thompson: Alright, alright. I'll give you two a brief tour. But remember, no touching anything!
+Frame: Medium shot of Dr. Thompson, slightly exasperated but still cordial, standing amongst the large equipment of the lab, ready to start the tour.
+--
+Line: SpongeBob: Don't worry, we promise to be on our best behavior.
+Frame: Close-up of SpongeBob reassures Dr. Thompson enthusiastically. His sparkling eyes and wide, hopeful smile denote sincerity.
+--
+Line: Patrick: I'll try.
+Frame: Close-up on Patrick, who shrugs noncommittally while looking somewhat perplexed, not quite grasping the gravity of the situation.
+--
+Frame: Wide shot of SpongeBob and Patrick following Dr. Thompson around the lab. Both are visibly fascinated by the eclectic range of machinery and equipment.
+--
+Line: SpongeBob: What does that one do?
+Frame: Medium shot of SpongeBob pointing excitedly at a large machine while Dr. Thompson tries to explain, the machine's vast complexity dwarfing them.
+--
+Line: Dr. Thompson: That's an early form of computer. We use it for complex calculations.
+Frame: Close-up of Dr. Thompson, captured mid-explanation, trying to simplify the machine's purpose for SpongeBob. The machine's imposing presence dominates the background.
+--
+Line: Patrick: It looks like a big typewriter. But with more lights.
+Frame: Close-up on Patrick contemplating the machine with a puzzled expression, comparing it to a typewriter, a concept he can relate to.
+--
+Line: SpongeBob: Ooh! Are these different flavors of bubble soap?
+Frame: Close-up of a station filled with test tubes holding colorful liquids, which SpongeBob is inspecting curiously, mistaking them for bubble soap.
+--
+Line: Scientist 3: Don't touch that! It's a highly reactive compound!
+Frame: An alarmed Scientist 3 rushing towards SpongeBob, waving his hands frantically. The background shows the test-tube station, the colorful liquids glowing ominously.
+--
+Line: Patrick: This looks like when I try to connect the dots. But... messier.
+Frame: Medium shot of Patrick squinting at a complex diagram on a blackboard, comparing it to a distorted version of his simple connect-the-dots puzzles.
+--
+Line: Dr. Thompson: Okay, that's enough of the tour. Let's head back to the meeting room.
+Frame: Mid-shot of Dr. Thompson exasperated, rubbing his temples as if to emphasize his exhaustion. SpongeBob and Patrick are visible in the frame, both still fascinated by their surroundings.
+--
+Line: SpongeBob: Thank you for showing us around! It's been a... enlightening experience.
+Frame: Close shot of SpongeBob showing sincere gratitude, his eyes shining with newly acquired knowledge.
+--
+Line: Patrick: Yeah, lots of blinky things!
+Frame: Close shot of Patrick, easily impressed and noting the blinking lights scattered around the lab.
+--
+Frame: As SpongeBob and Patrick move away, one of the machines they were near starts beeping erratically. Scientists swarm it with panic in their eyes, trying to figure out what went wrong.
+--
+Line: Scientist 4: What did they do?!
+Frame: Mid shot of Scientist 4, face pale with worry as the machine blares alarms in the background, perfectly encapsulating the sudden chaos.
+--
+Line: Dr. Thompson: I thought I said no touching!
+Frame: Close shot of an alarmed Dr. Thompson, framed against the background of beeping machines, his frustration amplified by the escalating situation.
+--
+Line: SpongeBob: I swear I didn't touch anything! Well, maybe just a tiny nudge...
+Frame: SpongeBob stands apologetically with innocent eyes, shrugging, unaware of the chaos he has caused. The frenzied lab and alarmed scientists serve as an intense backdrop.
+--
+Setting: The lab turns into a madhouse. Scientists rush to stabilize the machines and equipment, while SpongeBob and Patrick, clueless about the gravity of the situation, continue to look around in wonder. Amidst the chaos and urgency, the scene transitions.
+Frame: A visible tracking shot that follows the clueless SpongeBob and Patrick around, capturing their fascination, contrasted with the escalating chaos of worried scientists in the background. The chaotic, yet still operational facility frames the characters perfectly, accentuating their bewildered innocence before the transition.
+--
+Cut to Scene: Scene 4.

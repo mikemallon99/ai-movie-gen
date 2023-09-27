@@ -2,9 +2,21 @@ import os
 import os.path
 import torch
 import subprocess
-from diffusers import DiffusionPipeline
-from moviepy.editor import ImageClip, AudioFileClip
+from diffusers import DiffusionPipeline, DPMSolverMultistepScheduler
+from diffusers.utils import export_to_video
+from moviepy.editor import *
 from moviegen.audiogen import make_text_to_speech
+
+
+def create_zeroscope_video(prompt, output_path):
+    print(f"Generating zeroscope video for prompt: {prompt}")
+    pipe = DiffusionPipeline.from_pretrained("cerspense/zeroscope_v2_576w", torch_dtype=torch.float16)
+    pipe.scheduler = DPMSolverMultistepScheduler.from_config(pipe.scheduler.config)
+    pipe.to("cuda")
+
+    video_frames = pipe(prompt, num_inference_steps=40, height=320, width=576, num_frames=30).frames
+    video_path = export_to_video(video_frames, output_video_path=output_path)
+    print(f"Successfully outputted zeroscope video to file: {output_path}")
 
 
 def get_stable_diffusion_model():
@@ -20,13 +32,17 @@ def make_stable_diffusion_image(prompt, out_file):
   images.save(out_file)
 
 
-def combine_image_and_audio(image_path, audio_path, out_file):
+def combine_image_and_audio(image_path, audio_path, audio_text, out_file):
     print(f"Attempting to combine image: {image_path} ; and audio {audio_path}")
     img_clip = ImageClip(image_path)
     audio = AudioFileClip(audio_path)
     img_clip = img_clip.set_duration(audio.duration)
     video = img_clip.set_audio(audio)
-    video.write_videofile(out_file, fps=25, preset='ultrafast')
+
+    subtitle = TextClip(audio_text.encode("utf8"), font='Arial', fontsize=40, color='yellow', method='caption', size=(1024,1024), stroke_color="black", align="South")
+    cvc = CompositeVideoClip([video, subtitle])
+    cvc = cvc.set_duration(video.duration)
+    cvc.write_videofile(out_file, fps=25, preset='ultrafast')
     print(f"Successfully combined image and audio to path {out_file}")
 
 
@@ -52,18 +68,12 @@ def run_wav2lip(image_path, audio_path, out_file):
     return result.returncode
 
 
-def gen_talking_video(image_prompt, audio_prompt, out_file):
-  print(f"Generating image for prompt: {image_prompt}")
-  image_path = f'{os.path.dirname(__file__)}/../outputs/generated_image.jpg'
-  make_stable_diffusion_image(image_prompt, image_path)
-
-  print(f"Generating speech audio for text: {audio_prompt}")
-  audio_path = f'{os.path.dirname(__file__)}/../outputs/generated_audio.wav'
-  make_text_to_speech(audio_prompt, audio_path)
-  # combine_image_and_audio(image_path, audio_path, out_file)
-  # return
-
+def gen_talking_video(image_path, audio_path, audio_text, out_file):
   print(f"Generating lip sync video...")
+  combine_image_and_audio(image_path, audio_path, audio_text, out_file)
+  return 
+
+  # HARDCODE TO STILL VIDEO FOR NOW
   return_code = run_wav2lip(
       image_path=image_path,
       audio_path=audio_path,
@@ -71,7 +81,6 @@ def gen_talking_video(image_prompt, audio_prompt, out_file):
   )
   if return_code != 0:
     print("Wav2Lip failed. Creating a video without lip sync...")
-    combine_image_and_audio(image_path, audio_path, out_file)
 
 
 def gen_still_video(image_prompt, out_file):

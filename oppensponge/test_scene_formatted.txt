@@ -1,0 +1,12 @@
+Act: Oppenheimer 2: Spongebob's Curse
+--
+Scene: The Unthinkable
+--
+Setting: SpongeBob's Neighborhood in Bikini Bottom. The scene is tranquil. Schools of fish pass by in the distance, jellyfish float peacefully, and bubbles rise from various locations. SpongeBob's pineapple house stands proudly.
+--
+Line: SpongeBob: Okay, Patrick, just one more coral piece and we should be good to go!
+Frame: Mid shot of SpongeBob looking at Patrick with a smile, holding a piece of coral, they're in the middle of various undersea items.
+--
+Line: Patrick: I still can't believe they let us take this thing back with us. Maybe it's a souvenir!
+Frame: Close-up of Patrick giggling, SpongeBob is visible over his shoulder, both surrounded by the piled up undersea items.
+--

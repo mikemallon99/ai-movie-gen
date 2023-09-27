@@ -1,0 +1,57 @@
+Act: Oppenheimer 2: Spongebob's Curse
+--
+Scene: Interrogation and Introduction
+--
+Setting: A simple, clean room within the Manhattan Project facility. It is likely meant for meetings and contains a large wooden table at its center. SpongeBob and Patrick are seated on one side, with Oppenheimer, Dr. Thompson, and several other scientists across from them. Security officers stand at attention near the doorway.
+--
+Frame: Establishing shot of the meeting room. A rectangular wooden table dominates the room. Oppenheimer and several scientists are seated at the table's far side, their faces stern and focused. Emergent lighting from the room's overhead fixtures casts a soft but steady glow. On the opposite side of the table, SpongeBob and Patrick are seated, their expressions one of childlike curiosity and wonder.
+--
+Line: Dr. Thompson: Found these two messing around in the lab. They just appeared out of nowhere.
+Frame: Medium close-up on Dr. Thompson. His face stern, his arm extended as if pointing towards SpongeBob and Patrick. The tight framing leaves the subject's face the primary focus, accenting their worried and confused expression.
+--
+Line: Oppenheimer: What are they? Some sort of aquatic... entities?
+Frame: Medium shot focused on Oppenheimer. He squints across the table at SpongeBob and Patrick, an expression of disbelief and puzzlement on his angular face. The blurred scientists and the setting create an impression of isolation around him.
+--
+Line: SpongeBob: Hi there! I'm SpongeBob, and this is my buddy, Patrick!
+Frame: Medium shot of SpongeBob cheerfully waving his yellow sponge hand at the scientists. Patrick is seated next to him, both of them dwarfed by the large wooden table. The room's cold, neutral tones contrast with SpongeBob's vibrant yellow and Patrick's vivid pink.
+--
+Line: Patrick: Hello, dry people!
+Frame: Close-up of Patrick Star, his star-shaped arm raised in a salute. His face carries an innocent, child-like enthusiasm against the more serious, scientific backdrop of the meeting room.
+--
+Line: Oppenheimer: How exactly did you two get into a top-secret facility?
+Frame: Medium close-up of Oppenheimer, his strong features bathed in the room's shadowy light as he leans forward, demanding an answer from Spongebob and Patrick. A faint reflection can be seen in his glasses, emphasizing the seriousness of his gaze.
+--
+Line: SpongeBob: It was a big swirly thing! Super fun. Felt like Jellyfish Fields on a windy day.
+Frame: Close-up on a smiling SpongeBob as he describes their journey into the facility. The cold colors of the room contrast with his bubbly demeanor, creating visual tension.
+--
+Line: Patrick: Yeah, and then we were here. In the not-wet place.
+Frame: Patrick's face fills the frame as he grins, retelling their adventure in all his childlike simplicity. The dry and technical environment of the room stands as a stark contrast to his aquatic origins, underlining the absurdity of the situation.
+--
+Line: Oppenheimer: This is a secure location. We are working on projects of great importance here.
+Frame: Over Oppenheimer's shoulder, SpongeBob and Patrick are seen nodding at his words. Oppenheimer occupies the left half of the frame while the surprisingly serene undersea duo occupy the right.
+--
+Line: SpongeBob: Like... Krabby Patties?
+Frame: An extreme close-up of SpongeBob's face. His wide eyes glows with curiosity and innocence as he forms a seemingly naïve question about the important projects.
+--
+Line: Patrick: Or secret ice cream flavors?
+Frame: Close-up on Patrick hitching onto SpongeBob's train of thought. His eyes gleam with anticipation of potential dessert revelations in the dry, secret facility.
+--
+Line: Dr. Thompson: No, not ice cream. Listen, you two need to leave.
+Frame: Medium close-up of Dr. Thompson leaning forward in frustration, forehead creased in a frown, with his firm and exasperated statement hanging in the sterile air of the meeting room.
+--
+Line: SpongeBob: We'd love to! But... how do we get back to Bikini Bottom?
+Frame: Full shot of SpongeBob, his face tilted up towards Oppenheimer and Dr. Thompson, a worried and hopeful expression on his face. In the background, Patrick consistently mirrors SpongeBob's feelings, amplifying the emotional effect.
+--
+Line: Oppenheimer: Bikini what?
+Frame: Medium close-up shot of Oppenheimer, eyebrows knitted together in confusion, trying to comprehend the seemingly nonsensical words coming out of the sponge and starfish.
+--
+Line: Patrick: Bikini Bottom! It's our home! With Squidward, and the Krusty Krab, and Jellyfish Fields...
+Frame: Close-up shot of Patrick as he excitedly explains about Bikini Bottom. His eyes light up and hands animate as he talks about their underwater hometown.
+--
+Line: SpongeBob and Patrick: Aye aye, captain!
+Frame: Medium shot of SpongeBob and Patrick saluting together, their childlike enthusiasm standing in sharp contrast with the serious atmosphere of the room.
+--
+Line: Oppenheimer: Okay, okay. Look, we'll try to figure out how to send you back. But until then, you can't touch anything or disrupt our work. Understand?
+Frame: Wide shot of Oppenheimer standing beside the table with an exhausted look on his face as he addresses SpongeBob and Patrick, their small forms displaying their willingness to cooperate.
+--
+Frame: Last shot of the scene. SpongeBob and Patrick give simultaneous salutes displaying their agreement. Oppenheimer stands at the threshold of the room framed by the door, a reluctant captain assigned to figure out the unlikely tidal wave of problems that washed ashore in his lab.

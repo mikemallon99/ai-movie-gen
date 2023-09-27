@@ -1,0 +1,62 @@
+Act: Oppenheimer 2: Spongebob's Curse
+--
+Scene: Unscientific Shenanigans
+--
+Setting: The main research lab of the Manhattan Project facility. Several scientists are gathered around a large table, discussing the intricate details of the bomb design. A big chalkboard shows complex calculations.
+--
+Frame: An overview of the Manhattan Project main research lab. On a large table, several scientists are huddled together, engaged in a fervent discussion. A chalkboard covered in complex mathematical equations serves as a backdrop, illustrating the gravity of the conversation.
+--
+Line: Dr. Thompson: Gentlemen, this is our most critical phase. We cannot afford mistakes. Precision is the key.
+Frame: Close-up shot of Dr. Thompson, an older man with a furrowed brow and worn features. He is speaking to the gathered scientists with an air of severity. 
+--
+Line: Dr. Clark: Agreed. The latest simulations show a promising yield, but we need to—
+Frame: Mid-shot of Dr. Clark, a younger man with a look of keen interest and determination. He is interrupted mid-sentence by a loud bang in the background.
+--
+Frame: Spongebob and Patrick, clad in oversized lab coats, are depicted standing amidst broken test tubes and spilled chemicals. Their cartoonish figures starkly contrast the realistic setting, adding to the absurdity of the situation.
+--
+Line: Patrick: Oops... Did I do that?
+Frame: Close-up of Patrick, a hefty, pink starfish wearing a lab coat several sizes too large for him. His innocent, clueless expression is contrasted against the chaotic background of the toppled stand and shattered test tubes.
+--
+Line: Spongebob: It's like bowling, but... science-y.
+Frame: SpongeBob, a small anthropomorphic sponge in a big lab coat, is giggling with unconcealed delight at the chaos. His cheeky smile and bright eyes reveal his innocence despite the commotion he has caused.
+--
+Line: Dr. Thompson: Who let them back in?!
+Frame: In a mid-shot, Dr. Thompson is seen standing, frustration clearly etched on his face as he glares at SpongeBob and Patrick.
+--
+Line: Security Officer: They said they were part of the inspection team... and... they had those coats on.
+Frame: A security officer standing awkwardly under Dr. Thompson's stare. His demeanor suggests he realizes his mistake but is at a loss for what to do.
+--
+Line: SpongeBob: Look, Patrick! I'm a scientist! Eureka!
+Frame: Medium shot of SpongeBob, who is excitedly hopping around in an oversized lab coat, exuding an aura of pure joy and blissful ignorance of the uproar he's caused.
+--
+Line: Patrick: Eureka? I thought we were in the dry place.
+Frame: Patrick, standing confusedly with a furrowed brow, the incongruity between his appearance and the lab setting is starkly pronounced. He's looking around the lab, completely oblivious to the fact that the 'dry place' he refers to is the desert in New Mexico around the facility.
+--
+Line: Dr. Martinez: Ignore them. Let's focus. We were discussing the isotope enrichment—
+Frame: Dr. Martinez, a woman with an austere demeanor, interrupts the chaos in a vain attempt to restore focus. Her hopeful yet stern expression portrays a futile struggle against the disturbance.
+--
+Line: Patrick: Look! It's purring!
+Frame: Mid-shot of Patrick, poking a large, complex machine with a stick. The machine begins to whirr loudly, its noise filling the lab while Patrick looks on, intrigued by its 'purring'.
+--
+Line: Dr. Clark: That's a centrifuge! Turn it off!
+Frame: Close-up of Dr. Clark's horrified face as the realization dawns on him. He stands up impulsively, knocking over his chair, his hand extended towards Patrick in a futile attempt to stop him.
+--
+Line: SpongeBob: Which button? This one? Or this? Oh, maybe it's this big red one!
+Frame: SpongeBob desperately pressing multiple buttons on the machine in an attempt to 'help'. The lights blink erratically reflecting on his glossy eyes and his expression of naive determination.
+--
+Line: Dr. Kapoor: That's it! I can't work like this! I’m out.
+Frame: Dr. Kapoor, fed up, rises from his seat, slamming his hands on the table, with a face displaying clear frustration. He storms out of the shot, leaving behind a trail of papers fluttering in his wake.
+--
+Line: Dr. Liu: Between world politics and... this? I need a vacation.
+Frame: Dr. Liu follows Dr. Kapoor’s example, visibly defeated and emotionally exhausted. His resignation is captured as he exits the frame, leaving his work behind, encapsulating academia's struggle against the comical absurdity.
+--
+Line: Dr. Thompson: I will have them removed immediately.
+Frame: Close-up of Dr. Thompson, taking a deep breath as he forces the words out of his mouth. His overall demeanor conveys a sense of dawning regret and resignation.
+--
+Line: Patrick: Is it lunchtime yet?
+Frame: Patrick's face fills the screen. Oblivious to everything, his eyes wander aimlessly, reflecting absolute innocence and cluelessness about the chaos he and SpongeBob have caused.
+--
+Line: SpongeBob: I could really go for a Krabby Patty!
+Frame: Close-up on SpongeBob, his eyes are wide with excitement at the thought of food. His innocent joy creates a stark contrast with the chaotic background—scientists rushing to contain the mess.
+--
+Cut to Scene 5.

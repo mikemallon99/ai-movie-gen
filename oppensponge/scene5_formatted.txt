@@ -1,0 +1,78 @@
+Act: Oppenheimer 2: Spongebob's Curse
+--
+Scene: 5: Confrontation and Realization
+--
+Setting: A dimly lit room filled with blueprints, books, and models of atomic structures. There's a large wooden desk in the center. A couple of chairs sit on one side, while Oppenheimer's chair is behind the desk. The atmosphere is heavy.
+--
+Frame: Medium shot of Oppenheimer sitting at his desk, an expression of apprehension on his face. The room's dim lighting casts long shadows. The atmosphere is still and tense.
+--
+Line: Security Officer: Sir, we found them meddling in the labs.
+Frame: Close shot of the security officer sternly talking to Oppenheimer, with SpongeBob and Patrick blurry in the background.
+--
+Line: Oppenheimer: Leave us.
+Frame: An over the shoulder shot of Oppenheimer who's backlit by the room's dim lighting. The door closing after the dismissal of the security officers is part of the frame.
+--
+Line: SpongeBob: Hi! I'm SpongeBob, and this is my best friend, Patrick. We didn't mean to cause any trouble. We just sort of... ended up here.
+Frame: Medium close up of SpongeBob, smiling innocently, with Patrick by his side, both appearing humble and confused in Oppenheimer's imposing office.
+--
+Line: Oppenheimer: Your recklessness could've had catastrophic consequences!
+Frame: Close-up shot of Oppenheimer, his voice is strained and his face showing clear agitation.
+--
+Line: Patrick: Cat-a-what?
+Frame: Medium close-up of Patrick, looking around curiously in the unfamiliar surroundings as he wonders about Oppenheimer's big words.
+--
+Line: SpongeBob: We're really sorry, sir. We just thought it was a fancy ice cream place or something.
+Frame: Close-up of SpongeBob, an expression of innocent dismay on his face.
+--
+Line: Oppenheimer: This is far from an ice cream parlor! This is a place where history is being made, where we're crafting the future!
+Frame: Medium shot of Oppenheimer looking stern and determined, emphasizing his powerful resistance to SpongeBob and Patrick's misunderstanding of his workplace.
+--
+Line: SpongeBob: Crafting? Like arts and crafts?
+Frame: SpongeBob tilting his head in confusion, trying to comprehend Oppenheimer's statement.
+--
+Line: Oppenheimer: No... We're building something... powerful.
+Frame: Close-up of Oppenheimer trying to explain his work, his facial expressions suggest he's having difficulty finding the right words.
+--
+Line: Patrick: Like a magic wand?
+Frame: Medium shot of Patrick, looking genuinely excited about the idea of a "magic wand".
+--
+Line: Oppenheimer: You've sabotaged crucial work here. This isn't a playground!
+Frame: A wider shot capturing Oppenheimer's frustration as he points a gun at SpongeBob, emphasizing his desperate need for control over the situation.
+--
+Line: SpongeBob: We didn't know! And... umm... pointing that thing at people isn't very nice!
+Frame: Close-up of SpongeBob with hands up in capitulation, still maintaining his innocence, despite the gravity of the situation.
+--
+Line: Patrick: Yeah, and it's definitely not an ice cream scoop...
+Frame: Medium shot of Patrick standing next to SpongeBob, commenting on the threatening object with a nervous edge to his typical innocence.
+--
+Line: Oppenheimer: You... you motherf-
+Frame: Close-up of Oppenheimer, visibly trying to restrain his anger.
+--
+Line: SpongeBob: We might be from a different world, but we know when someone's trying to do something that might hurt others. And this place feels... dangerous.
+Frame: Medium close-up of Spongebob, his tone and expression noticeably serious for the first time.
+--
+Line: Patrick: Yeah, not jellyfishing-friendly at all.
+Frame: Medium close-up of Patrick nodding in agreement, still maintaining his whimsical innocence amidst the seriousness.
+--
+Line: SpongeBob: Your big words and machines don't scare us. We've faced the Alaskan Bull Worm, the evil Man Ray, and even the Bubble Poppin' Boys!
+Frame: A wide shot capturing a determined SpongeBob standing strong, his confidence growing despite the intimidating atmosphere.
+--
+Line: Oppenheimer: What are you even talking about?
+Frame: Close-up of a puzzled Oppenheimer, overwhelmed by the absurdity of SpongeBob's courage.
+--
+Line: SpongeBob: I don't know what you're building here, but if it's as bad as it feels, maybe you should think twice before continuing.
+Frame: Medium shot of SpongeBob, his voice carrying an earnest plea, making a stand against Oppenheimer's hidden project.
+--
+Line: Oppenheimer: You don't understand. This is bigger than you can comprehend.
+Frame: Close-up of Oppenheimer, his voice filled with a mix of frustration and resignation.
+--
+Line: SpongeBob: Maybe, but remember, every big problem in the ocean started as a small ripple.
+Frame: Medium close-up of SpongeBob, his tone remains genuine and he looks determined.
+--
+Line: Oppenheimer: Go... before I change my mind.
+Frame: Medium shot of Oppenheimer pointing reluctantly to the door, his face shows a glimpse of vulnerability.
+--
+Line: SpongeBob: If you ever want to visit Bikini Bottom, leave the pointy thing behind. We prefer jellyfish nets.
+Frame: Medium shot of Spongebob and Patrick leaving Oppenheimer's room, SpongeBob turns back to deliver his final sentence with his typical joviality.
+--
+Scene: 6: TBD
